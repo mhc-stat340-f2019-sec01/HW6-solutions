@@ -149,7 +149,7 @@ ridge_fit <- train(
   trControl = trainControl(method = "cv"),
   tuneGrid = data.frame(
     alpha = 0,
-    lambda = seq(from = 0, to = 5000, length = 100)
+    lambda = seq(from = 0, to = 50000, length = 100)
   )
 )
 
@@ -168,7 +168,7 @@ lasso_fit <- train(
   trControl = trainControl(method = "cv"),
   tuneGrid = data.frame(
     alpha = 1,
-    lambda = seq(from = 0, to = 50000, length = 100)
+    lambda = seq(from = 0, to = 5000, length = 100)
   )
 )
 
@@ -204,7 +204,7 @@ mean((houses_test$Sale_Price - predict(lasso_fit, newdata = houses_test))^2)
 mean((houses_test$Sale_Price - predict(tree_fit, newdata = houses_test))^2)
 ```
 
-The LASSO regression approach had the best test set MSE, with ridge regression close behind.  The linear model estimated by least squares had the worst test set MSE.
+The ridge regression approach had the best test set MSE, with LASSO close behind.  The linear model estimated by least squares had the worst test set MSE.
 
 # Collaboration and Sources
 
